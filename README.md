@@ -149,6 +149,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 🔗 **Live URL:** [Scale Up Digital Portfolio](https://scale-up-woman.netlify.app/)
 
-**Boishakhi Ghosh Mukta** — bgmukta11@gmail.com
+Boishakhi Ghosh Mukta - [@boishakhi](https://www.linkedin.com/in/boishakhimukta/) - bgmukta11@gmail.com
 
-**Project Link:** [https://github.com/boishakhi-mukta/Scale-up-project](https://github.com/boishakhi-mukta/Scale-up-project)
+**Project Link:** [Scale Up Digital Portfolio](https://github.com/boishakhi-mukta/Scale-up-project)
