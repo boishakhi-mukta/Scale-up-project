@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { usePortfolioCards } from "../hooks/usePortfolioCards";
+import { useCountUp } from "../hooks/useCountUp";
 import { useLanguage } from "../lib/LanguageContext";
 import { useAuth } from "../lib/AuthContext";
 import { deletePortfolio } from "../lib/portfolioStore";
@@ -8,6 +9,7 @@ import { useState } from "react";
 
 export function HomePage() {
   const candidates = usePortfolioCards();
+  const candidateCount = useCountUp(candidates.length);
   const { t } = useLanguage();
   const { user } = useAuth();
   const navigate = useNavigate();
@@ -20,7 +22,7 @@ export function HomePage() {
       text: t("home.deleteConfirmText"),
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#4f46e5",
+      confirmButtonColor: "#54b435",
       cancelButtonColor: "#ef4444",
       confirmButtonText: t("home.deleteConfirmBtn"),
       cancelButtonText: t("home.deleteCancelBtn")
@@ -60,7 +62,7 @@ export function HomePage() {
       <section className="mx-auto grid max-w-[1140px] gap-14 px-6 py-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:py-24">
         <div className="animate-fade-up">
           <h1 className="font-serif text-5xl font-extrabold leading-tight text-slate-900 sm:text-6xl lg:text-[4rem]">
-            {t("home.title1")} <span className="text-indigo-600">{t("home.title2")}</span>
+            {t("home.title1")} <span className="text-brand-600">{t("home.title2")}</span>
           </h1>
           <p className="mt-6 max-w-[570px] text-lg leading-relaxed text-slate-600 sm:text-xl">
             {t("home.subtitle")}
@@ -68,7 +70,7 @@ export function HomePage() {
           <div className="mt-10 flex flex-wrap gap-4">
             <Link
               to={user ? "/register" : "/login"}
-              className="rounded-full bg-indigo-600 px-8 py-3.5 text-sm font-bold text-white shadow-lg shadow-indigo-200 transition duration-300 hover:-translate-y-0.5 hover:bg-indigo-700"
+              className="rounded-full bg-brand-600 px-8 py-3.5 text-sm font-bold text-white shadow-lg shadow-brand-200 transition duration-300 hover:-translate-y-0.5 hover:bg-brand-700"
             >
               {t("home.createPortfolio")}
             </Link>
@@ -81,7 +83,7 @@ export function HomePage() {
           </div>
           <div className="mt-12 grid max-w-xl gap-4 sm:grid-cols-3">
             <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-              <p className="text-3xl font-extrabold text-slate-900">{candidates.length}+</p>
+              <p className="text-3xl font-extrabold text-slate-900">{candidateCount}+</p>
               <p className="mt-1 text-sm font-medium text-slate-500">{t("home.candidates")}</p>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
@@ -106,7 +108,7 @@ export function HomePage() {
       <section className="mx-auto mt-24 max-w-[1140px] px-6">
         <div className="animate-fade-up text-center">
           <h2 className="font-serif text-4xl font-extrabold text-slate-900 sm:text-5xl">
-            {t("home.ourCandidates1")} <span className="text-indigo-600">{t("home.ourCandidates2")}</span>
+            {t("home.ourCandidates1")} <span className="text-brand-600">{t("home.ourCandidates2")}</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600 sm:text-xl">
             {t("home.ourCandidatesSubtitle")}
@@ -125,7 +127,7 @@ export function HomePage() {
                 <img
                   src={candidate.image}
                   alt={candidate.name}
-                  className="mx-auto h-28 w-28 rounded-full border-4 border-indigo-50 object-cover shadow-sm"
+                  className="mx-auto h-28 w-28 rounded-full border-4 border-brand-50 object-cover shadow-sm"
                 />
                 <h3 className="mt-5 text-xl font-bold text-slate-900">{candidate.name}</h3>
                 <p className="mt-2 min-h-12 text-sm font-medium text-slate-500">{candidate.title}</p>
@@ -133,7 +135,7 @@ export function HomePage() {
                   {hasProfile ? (
                     <Link
                       to={`/portfolio/${candidate.slug}`}
-                      className="inline-block w-full rounded-full bg-gradient-to-r from-indigo-500 to-indigo-600 px-5 py-3 text-sm font-bold text-white shadow-md transition duration-300 hover:from-indigo-600 hover:to-indigo-700 hover:shadow-lg hover:-translate-y-0.5"
+                      className="inline-block w-full rounded-full bg-gradient-to-r from-brand-500 to-brand-600 px-5 py-3 text-sm font-bold text-white shadow-md transition duration-300 hover:from-brand-600 hover:to-brand-700 hover:shadow-lg hover:-translate-y-0.5"
                     >
                       {t("home.portfolioBtn")}
                     </Link>
@@ -181,10 +183,10 @@ export function HomePage() {
                 value={subscribeEmail}
                 onChange={(e) => setSubscribeEmail(e.target.value)}
                 placeholder={t("home.emailPlaceholder")}
-                className="flex-1 rounded-full border border-slate-300 bg-slate-50 px-5 py-3.5 text-slate-900 placeholder-slate-400 outline-none transition focus:border-indigo-500 focus:bg-white focus:ring-4 focus:ring-indigo-100"
+                className="flex-1 rounded-full border border-slate-300 bg-slate-50 px-5 py-3.5 text-slate-900 placeholder-slate-400 outline-none transition focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-100"
                 required
               />
-              <button type="submit" className="rounded-full bg-indigo-600 px-8 py-3.5 text-sm font-bold text-white shadow-md shadow-indigo-200 transition duration-300 hover:bg-indigo-700">
+              <button type="submit" className="rounded-full bg-brand-600 px-8 py-3.5 text-sm font-bold text-white shadow-md shadow-brand-200 transition duration-300 hover:bg-brand-700">
                 {t("home.subscribeBtn")}
               </button>
             </form>

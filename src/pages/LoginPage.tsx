@@ -67,12 +67,12 @@ export function LoginPage() {
   };
 
   const inputCls =
-    "w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-800 placeholder-slate-400 outline-none transition focus:border-indigo-500 focus:bg-white focus:ring-4 focus:ring-indigo-100 shadow-sm";
+    "w-full rounded-xl border border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-800 placeholder-slate-400 outline-none transition focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-100 shadow-sm";
 
   return (
     <div className="flex min-h-[80vh] items-center justify-center px-6 py-12">
       <div className="w-full max-w-md rounded-3xl border border-slate-200 bg-white shadow-xl overflow-hidden">
-        <div className="bg-indigo-50/50 border-b border-indigo-100 px-8 py-6 text-center">
+        <div className="bg-brand-50/50 border-b border-brand-100 px-8 py-6 text-center">
           <h1 className="text-2xl font-extrabold text-slate-900">
             {t("login.title")}
           </h1>
@@ -90,7 +90,7 @@ export function LoginPage() {
               className="flex w-full items-center justify-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm font-bold text-slate-700 shadow-sm hover:bg-slate-50 transition disabled:opacity-50"
             >
               {isAuthenticating ? (
-                <span className="h-5 w-5 animate-spin rounded-full border-2 border-slate-300 border-t-indigo-600" />
+                <span className="h-5 w-5 animate-spin rounded-full border-2 border-slate-300 border-t-brand-600" />
               ) : (
                 <svg className="h-5 w-5" viewBox="0 0 24 24">
                   <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
@@ -144,7 +144,7 @@ export function LoginPage() {
             <button
               type="submit"
               disabled={isSubmitting || isAuthenticating}
-              className="mt-6 w-full rounded-xl bg-linear-to-r from-indigo-500 to-indigo-600 px-4 py-3.5 text-sm font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:from-indigo-600 hover:to-indigo-700 hover:shadow-lg disabled:opacity-50"
+              className="mt-6 w-full rounded-xl bg-linear-to-r from-brand-500 to-brand-600 px-4 py-3.5 text-sm font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:from-brand-600 hover:to-brand-700 hover:shadow-lg disabled:opacity-50"
             >
               {isSubmitting ? t("login.loggingIn") : t("login.loginAs")}
             </button>

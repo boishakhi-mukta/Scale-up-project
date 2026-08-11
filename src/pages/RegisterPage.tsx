@@ -54,7 +54,7 @@ const SUGGESTED_SKILLS: Record<"no" | "en", string[]> = {
 };
 
 const inputCls =
-  "w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-800 placeholder-slate-400 outline-none transition duration-200 focus:border-indigo-500 focus:bg-white focus:ring-4 focus:ring-indigo-100 shadow-sm";
+  "w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-800 placeholder-slate-400 outline-none transition duration-200 focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-100 shadow-sm";
 
 const inputErrCls =
   "w-full rounded-xl border border-red-400 bg-red-50/50 px-4 py-3 text-sm text-slate-800 placeholder-slate-400 outline-none transition duration-200 focus:border-red-500 focus:ring-4 focus:ring-red-100 shadow-sm";
@@ -256,7 +256,7 @@ export function RegisterPage() {
 
         {/* Title */}
         <div className="mb-10 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-indigo-100 bg-indigo-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-indigo-600">
+          <span className="inline-flex items-center gap-2 rounded-full border border-brand-100 bg-brand-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-brand-600">
             {t("register.badge")}
           </span>
           <h1 className="mt-4 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">
@@ -276,12 +276,12 @@ export function RegisterPage() {
                 onClick={() => s.id < step && setStep(s.id)}
                 className={[
                   "flex items-center gap-2 text-xs font-semibold transition",
-                  s.id === step ? "text-indigo-700" : s.id < step ? "cursor-pointer text-emerald-600" : "text-slate-400",
+                  s.id === step ? "text-brand-700" : s.id < step ? "cursor-pointer text-emerald-600" : "text-slate-400",
                 ].join(" ")}
               >
                 <span className={[
                   "flex h-7 w-7 items-center justify-center rounded-full border-2 text-sm transition font-bold",
-                  s.id === step    ? "border-indigo-600 bg-indigo-600 text-white"
+                  s.id === step    ? "border-brand-600 bg-brand-600 text-white"
                   : s.id < step   ? "border-emerald-500 bg-emerald-500 text-white"
                   : "border-slate-300 bg-white text-slate-400",
                 ].join(" ")}>{s.id < step ? "✓" : s.id}</span>
@@ -290,7 +290,7 @@ export function RegisterPage() {
             ))}
           </div>
           <div className="h-1.5 w-full rounded-full bg-slate-100">
-            <div className="h-1.5 rounded-full bg-gradient-to-r from-indigo-500 to-violet-500 transition-all duration-500"
+            <div className="h-1.5 rounded-full bg-gradient-to-r from-brand-500 to-brand-700 transition-all duration-500"
               style={{ width: `${progress}%` }} />
           </div>
         </div>
@@ -299,7 +299,7 @@ export function RegisterPage() {
         <div className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl">
 
           {/* Step header */}
-          <div className="border-b border-indigo-100 bg-indigo-50/50 px-8 py-7">
+          <div className="border-b border-brand-100 bg-brand-50/50 px-8 py-7">
             <p className="text-2xl">{STEPS[step - 1].icon}</p>
             <h2 className="mt-1 text-xl font-extrabold text-slate-900">
               {t("register.stepPrefix")} {step} — {STEPS[step - 1].label}
@@ -370,10 +370,10 @@ export function RegisterPage() {
                     <div className="mt-1 flex items-center gap-4">
                       {data.image && (
                         <img src={data.image} alt={t("register.photoPreview")}
-                          className="h-16 w-16 rounded-full border-2 border-indigo-100 object-cover shadow-sm"
+                          className="h-16 w-16 rounded-full border-2 border-brand-100 object-cover shadow-sm"
                           onError={(e) => (e.currentTarget.style.display = "none")} />
                       )}
-                      <label className="cursor-pointer rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 px-6 py-4 text-sm font-medium text-slate-600 transition hover:border-indigo-400 hover:bg-indigo-50 hover:text-indigo-700 flex-1 text-center">
+                      <label className="cursor-pointer rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 px-6 py-4 text-sm font-medium text-slate-600 transition hover:border-brand-400 hover:bg-brand-50 hover:text-brand-700 flex-1 text-center">
                         {t("register.uploadPrompt")}
                         <input type="file" accept="image/*" className="hidden" onChange={handleImageUpload} />
                       </label>
@@ -425,12 +425,12 @@ export function RegisterPage() {
                       "flex flex-wrap gap-2 rounded-xl border bg-white px-4 py-3 transition focus-within:ring-4 shadow-sm",
                       errors.skills
                         ? "border-red-400 focus-within:border-red-500 focus-within:ring-red-100"
-                        : "border-slate-300 focus-within:border-indigo-500 focus-within:ring-indigo-100",
+                        : "border-slate-300 focus-within:border-brand-500 focus-within:ring-brand-100",
                     ].join(" ")}>
                       {data.skills.map((s) => (
-                        <span key={s} className="flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold bg-indigo-100 text-indigo-700">
+                        <span key={s} className="flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold bg-brand-100 text-brand-700">
                           {s}
-                          <button type="button" onClick={() => removeSkill(s)} className="leading-none text-indigo-400 hover:text-indigo-700">×</button>
+                          <button type="button" onClick={() => removeSkill(s)} className="leading-none text-brand-400 hover:text-brand-700">×</button>
                         </span>
                       ))}
                       <input
@@ -445,7 +445,7 @@ export function RegisterPage() {
                     <div className="mt-3 flex flex-wrap gap-2">
                       {SUGGESTED_SKILLS[language].filter((s) => !data.skills.includes(s)).map((s) => (
                         <button key={s} type="button" onClick={() => addSkill(s)}
-                          className="rounded-full border px-3 py-1 text-xs font-bold transition border-slate-300 bg-slate-50 text-slate-700 hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-700">
+                          className="rounded-full border px-3 py-1 text-xs font-bold transition border-slate-300 bg-slate-50 text-slate-700 hover:border-brand-300 hover:bg-brand-50 hover:text-brand-700">
                           + {s}
                         </button>
                       ))}
@@ -462,7 +462,7 @@ export function RegisterPage() {
                     <div className="mb-3 flex items-center justify-between">
                       <label className={labelCls + " mb-0"}>{t("register.expTitle")}</label>
                       <button type="button" onClick={() => addRow("experiences")}
-                        className="text-xs font-semibold text-indigo-600 transition hover:text-indigo-800">
+                        className="text-xs font-semibold text-brand-600 transition hover:text-brand-800">
                         {t("register.addBtn")}
                       </button>
                     </div>
@@ -506,7 +506,7 @@ export function RegisterPage() {
                     <div className="mb-3 flex items-center justify-between">
                       <label className={labelCls + " mb-0"}>{t("register.eduTitle")}</label>
                       <button type="button" onClick={() => addRow("education")}
-                        className="text-xs font-semibold text-indigo-600 transition hover:text-indigo-800">
+                        className="text-xs font-semibold text-brand-600 transition hover:text-brand-800">
                         {t("register.addBtn")}
                       </button>
                     </div>
@@ -559,12 +559,12 @@ export function RegisterPage() {
 
               {step < STEPS.length ? (
                 <button type="button" onClick={goNext}
-                  className="rounded-full bg-indigo-600 px-8 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-200 transition hover:-translate-y-0.5 hover:bg-indigo-700">
+                  className="rounded-full bg-brand-600 px-8 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-200 transition hover:-translate-y-0.5 hover:bg-brand-700">
                   {t("register.nextBtn")}
                 </button>
               ) : (
                 <button type="submit"
-                  className="rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 px-8 py-2.5 text-sm font-semibold text-white shadow-lg shadow-indigo-300 transition hover:-translate-y-0.5">
+                  className="rounded-full bg-gradient-to-r from-brand-600 to-brand-800 px-8 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-300 transition hover:-translate-y-0.5">
                   {editSlug ? t("register.saveChanges") : t("register.createBtn")}
                 </button>
               )}

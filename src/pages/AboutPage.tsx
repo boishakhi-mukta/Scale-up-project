@@ -8,7 +8,7 @@ export function AboutPage() {
     <div className="mx-auto max-w-[1140px] px-6 py-12 lg:py-24">
       <section className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
         <div className="animate-fade-up">
-          <span className="inline-flex rounded-full border border-indigo-200 bg-indigo-50 px-4 py-2 text-sm font-bold text-indigo-700 shadow-sm">
+          <span className="inline-flex rounded-full border border-brand-200 bg-brand-50 px-4 py-2 text-sm font-bold text-brand-700 shadow-sm">
             {t("about.badge")}
           </span>
           <h1 className="mt-8 font-serif text-5xl font-extrabold text-slate-900 sm:text-6xl">{t("about.title")}</h1>
@@ -49,7 +49,7 @@ export function AboutPage() {
               />
               <div className="flex flex-col justify-center">
                 <h3 className="text-2xl font-bold text-slate-900">{t("about.meet")}{member.name}</h3>
-                <p className="mt-2 text-sm font-bold uppercase tracking-widest text-indigo-600">{member.title}</p>
+                <p className="mt-2 text-sm font-bold uppercase tracking-widest text-brand-600">{member.title}</p>
                 <p className="mt-4 leading-relaxed text-slate-600">{member.description}</p>
               </div>
             </article>

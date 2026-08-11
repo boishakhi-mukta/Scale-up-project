@@ -1,9 +1,20 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Serif:wght@400;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800&family=Roboto+Slab:wght@400;600;700;800&display=swap");
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", sans-serif;
-  --font-serif: "Noto Serif", serif;
+  --font-sans: "Roboto", sans-serif;
+  --font-serif: "Roboto Slab", serif;
+
+  --color-brand-50: #f3fbf0;
+  --color-brand-100: #d5ead8;
+  --color-brand-200: #b9dfbc;
+  --color-brand-300: #96ce9c;
+  --color-brand-400: #74be79;
+  --color-brand-500: #5fb84c;
+  --color-brand-600: #54b435;
+  --color-brand-700: #379237;
+  --color-brand-800: #2b7530;
+  --color-brand-900: #1f5322;
 }
 
 html {
@@ -62,7 +73,7 @@ select {
 .card-lift:hover {
   transform: translateY(-8px);
   box-shadow: 0 24px 60px rgba(15, 23, 42, 0.14);
-  border-color: rgba(129, 140, 248, 0.28);
+  border-color: rgba(116, 190, 121, 0.28);
 }
 
 .animate-fade-up {
