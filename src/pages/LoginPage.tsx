@@ -20,8 +20,8 @@ export function LoginPage() {
     try {
       await loginWithEmailPassword(email, password);
       Swal.fire({
-        title: "Suksess!",
-        text: "Du er nå logget inn.",
+        title: t("login.successTitle"),
+        text: t("login.successText"),
         icon: "success",
         toast: true,
         position: "top-end",
@@ -34,11 +34,11 @@ export function LoginPage() {
       const code: string = err?.code ?? "";
       const message =
         code === "auth/invalid-credential" || code === "auth/wrong-password" || code === "auth/user-not-found"
-          ? "Feil e-post eller passord."
+          ? t("login.errorInvalidCredentials")
           : code === "auth/too-many-requests"
-          ? "For mange forsøk. Prøv igjen senere."
-          : "Innlogging mislyktes. Sjekk e-post og passord.";
-      Swal.fire({ title: "Feil", text: message, icon: "error" });
+          ? t("login.errorTooManyRequests")
+          : t("login.errorGeneric");
+      Swal.fire({ title: t("login.errorTitle"), text: message, icon: "error" });
     } finally {
       setIsSubmitting(false);
     }
@@ -49,8 +49,8 @@ export function LoginPage() {
     try {
       await loginWithGoogle();
       Swal.fire({
-        title: "Suksess!",
-        text: "Du er nå logget inn.",
+        title: t("login.successTitle"),
+        text: t("login.successText"),
         icon: "success",
         toast: true,
         position: "top-end",
@@ -123,7 +123,7 @@ export function LoginPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="deg@eksempel.no"
+                placeholder={t("login.emailPlaceholder")}
                 className={inputCls}
                 required
               />
@@ -146,7 +146,7 @@ export function LoginPage() {
               disabled={isSubmitting || isAuthenticating}
               className="mt-6 w-full rounded-xl bg-linear-to-r from-indigo-500 to-indigo-600 px-4 py-3.5 text-sm font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:from-indigo-600 hover:to-indigo-700 hover:shadow-lg disabled:opacity-50"
             >
-              {isSubmitting ? "Logger inn…" : t("login.loginAs")}
+              {isSubmitting ? t("login.loggingIn") : t("login.loginAs")}
             </button>
           </form>
         </div>

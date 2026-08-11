@@ -19,12 +19,12 @@ export function AboutPage() {
         <div className="animate-float grid grid-cols-2 gap-4 sm:gap-6">
           <img
             src="/Images/image/group.jpeg"
-            alt="Nettverkshuset aktivitet"
+            alt={t("about.activityAlt")}
             className="card-lift h-64 w-full rounded-3xl object-cover shadow-sm"
           />
           <img
             src="/Images/image/header_bg.png"
-            alt="Nettverkshuset fellesskap"
+            alt={t("about.communityAlt")}
             className="card-lift h-64 w-full rounded-3xl object-cover shadow-sm sm:translate-y-8"
           />
         </div>
@@ -61,7 +61,7 @@ export function AboutPage() {
         <h2 className="text-center font-serif text-4xl font-extrabold text-slate-900">{t("about.partners")}</h2>
         <div className="marquee mt-10 rounded-3xl border border-slate-200 bg-white py-8 shadow-sm">
           <div className="marquee-track opacity-80 grayscale transition-all hover:opacity-100 hover:grayscale-0">
-            <img src="/Images/image/partners.png" alt="Samarbeidspartnere" className="marquee-image" />
+            <img src="/Images/image/partners.png" alt={t("about.partners")} className="marquee-image" />
             <img src="/Images/image/partners.png" alt="" aria-hidden="true" className="marquee-image" />
           </div>
         </div>

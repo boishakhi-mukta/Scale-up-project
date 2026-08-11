@@ -2,7 +2,7 @@ import { KeyboardEvent, useState, useEffect } from "react";
 import { useNavigate, Navigate, useSearchParams } from "react-router-dom";
 import { createPortfolio, getPortfolioBySlug } from "../lib/portfolioStore";
 import { useAuth } from "../lib/AuthContext";
-import { useLanguage } from "../lib/LanguageContext";
+import { useLanguage, ValidPaths } from "../lib/LanguageContext";
 import Swal from "sweetalert2";
 
 /* ─── Types ─────────────────────────────────────────────── */
@@ -40,11 +40,18 @@ const initialData: FormData = {
   education: [emptyRow()],
 };
 
-const SUGGESTED_SKILLS = [
-  "JavaScript", "TypeScript", "React", "Next.js", "Node.js",
-  "Python", "SQL", "MongoDB", "Tailwind CSS", "Git",
-  "Figma", "UX Design", "Dataanalyse", "Maskinlæring", "AWS",
-];
+const SUGGESTED_SKILLS: Record<"no" | "en", string[]> = {
+  no: [
+    "JavaScript", "TypeScript", "React", "Next.js", "Node.js",
+    "Python", "SQL", "MongoDB", "Tailwind CSS", "Git",
+    "Figma", "UX Design", "Dataanalyse", "Maskinlæring", "AWS",
+  ],
+  en: [
+    "JavaScript", "TypeScript", "React", "Next.js", "Node.js",
+    "Python", "SQL", "MongoDB", "Tailwind CSS", "Git",
+    "Figma", "UX Design", "Data Analysis", "Machine Learning", "AWS",
+  ],
+};
 
 const inputCls =
   "w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-800 placeholder-slate-400 outline-none transition duration-200 focus:border-indigo-500 focus:bg-white focus:ring-4 focus:ring-indigo-100 shadow-sm";
@@ -55,7 +62,7 @@ const inputErrCls =
 const labelCls = "block text-xs font-bold uppercase tracking-widest text-slate-600 mb-2";
 
 /* ─── Validation ─────────────────────────────────────────── */
-function validateStep(step: number, data: FormData, t: any): StepErrors {
+function validateStep(step: number, data: FormData, t: (path: ValidPaths) => string): StepErrors {
   const errors: StepErrors = {};
 
   if (step === 1) {
@@ -87,7 +94,7 @@ export function RegisterPage() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const editSlug = searchParams.get("edit");
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   
   const [step, setStep]       = useState(1);
   const [data, setData]       = useState<FormData>(initialData);
@@ -179,7 +186,7 @@ export function RegisterPage() {
     const file = e.target.files?.[0];
     if (!file) return;
     if (file.size > 2 * 1024 * 1024) {
-      Swal.fire({ title: "Feil", text: "Bildet er for stort. Maks 2 MB.", icon: "error" });
+      Swal.fire({ title: t("register.errorDialogTitle"), text: t("register.imageTooLarge"), icon: "error" });
       e.target.value = "";
       return;
     }
@@ -221,13 +228,13 @@ export function RegisterPage() {
         skillsText, experienceText, educationText,
       }, editSlug || undefined);
     } catch (err: any) {
-      Swal.fire({ title: "Feil", text: err.message || "Noe gikk galt. Prøv igjen.", icon: "error" });
+      Swal.fire({ title: t("register.errorDialogTitle"), text: err.message || t("register.saveErrorGeneric"), icon: "error" });
       return;
     }
 
     Swal.fire({
-      title: "Suksess!",
-      text: editSlug ? "Profilen ble oppdatert." : "Profilen ble opprettet.",
+      title: t("register.saveSuccessTitle"),
+      text: editSlug ? t("register.updatedText") : t("register.createdText"),
       icon: "success",
       toast: true,
       position: "top-end",
@@ -362,7 +369,7 @@ export function RegisterPage() {
                     <label className={labelCls}>{t("register.photoUpload")}</label>
                     <div className="mt-1 flex items-center gap-4">
                       {data.image && (
-                        <img src={data.image} alt="forhåndsvisning"
+                        <img src={data.image} alt={t("register.photoPreview")}
                           className="h-16 w-16 rounded-full border-2 border-indigo-100 object-cover shadow-sm"
                           onError={(e) => (e.currentTarget.style.display = "none")} />
                       )}
@@ -436,7 +443,7 @@ export function RegisterPage() {
                     </div>
                     {errors.skills && <p className="mt-1 text-xs text-red-500">{errors.skills}</p>}
                     <div className="mt-3 flex flex-wrap gap-2">
-                      {SUGGESTED_SKILLS.filter((s) => !data.skills.includes(s)).map((s) => (
+                      {SUGGESTED_SKILLS[language].filter((s) => !data.skills.includes(s)).map((s) => (
                         <button key={s} type="button" onClick={() => addSkill(s)}
                           className="rounded-full border px-3 py-1 text-xs font-bold transition border-slate-300 bg-slate-50 text-slate-700 hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-700">
                           + {s}

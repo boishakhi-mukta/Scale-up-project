@@ -194,6 +194,7 @@ export const translations = {
       subtitle: "Lenken finnes ikke i den nye React-applikasjonen ennå.",
       backHome: "Til forsiden",
     },
+  },
   en: {
     nav: {
       home: "Home",

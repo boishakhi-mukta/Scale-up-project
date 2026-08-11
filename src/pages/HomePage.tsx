@@ -16,20 +16,20 @@ export function HomePage() {
 
   const handleDelete = (slug: string) => {
     Swal.fire({
-      title: "Are you sure to delete this profile?",
-      text: "Er du sikker på at du vil slette denne profilen?",
+      title: t("home.deleteConfirmTitle"),
+      text: t("home.deleteConfirmText"),
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#4f46e5",
       cancelButtonColor: "#ef4444",
-      confirmButtonText: "Ja, slett den!",
-      cancelButtonText: "Avbryt"
+      confirmButtonText: t("home.deleteConfirmBtn"),
+      cancelButtonText: t("home.deleteCancelBtn")
     }).then((result) => {
       if (result.isConfirmed) {
         deletePortfolio(slug);
         Swal.fire({
-          title: "Slettet!",
-          text: "Porteføljen har blitt slettet.",
+          title: t("home.deleteSuccessTitle"),
+          text: t("home.deleteSuccessText"),
           icon: "success",
           timer: 2000,
           showConfirmButton: false
@@ -41,10 +41,10 @@ export function HomePage() {
   const handleSubscribe = (e: { preventDefault(): void }) => {
     e.preventDefault();
     if (!subscribeEmail) return;
-    
+
     Swal.fire({
-      title: "Suksess!",
-      text: "Takk for din interesse. Vi tar kontakt snart!",
+      title: t("home.subscribeSuccessTitle"),
+      text: t("home.subscribeSuccessText"),
       icon: "success",
       toast: true,
       position: "top-end",

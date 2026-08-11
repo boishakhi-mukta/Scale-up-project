@@ -95,8 +95,8 @@ export function AppLayout() {
                         setShowMenu(false);
                         logout();
                         Swal.fire({
-                          title: "Suksess!",
-                          text: "Du er nå logget ut.",
+                          title: t("layout.logoutSuccessTitle"),
+                          text: t("layout.logoutSuccessText"),
                           icon: "success",
                           toast: true,
                           position: "top-end",
