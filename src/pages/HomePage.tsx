@@ -59,14 +59,7 @@ export function HomePage() {
     <>
       <section className="mx-auto grid max-w-[1140px] gap-14 px-6 py-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:py-24">
         <div className="animate-fade-up">
-          <span className="inline-flex items-center gap-2 rounded-full border border-indigo-200 bg-indigo-50 px-4 py-2 text-sm font-bold text-indigo-700 shadow-sm">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
-            </span>
-            {t("home.badge")}
-          </span>
-          <h1 className="mt-8 font-serif text-5xl font-extrabold leading-tight text-slate-900 sm:text-6xl lg:text-[4rem]">
+          <h1 className="font-serif text-5xl font-extrabold leading-tight text-slate-900 sm:text-6xl lg:text-[4rem]">
             {t("home.title1")} <span className="text-indigo-600">{t("home.title2")}</span>
           </h1>
           <p className="mt-6 max-w-[570px] text-lg leading-relaxed text-slate-600 sm:text-xl">

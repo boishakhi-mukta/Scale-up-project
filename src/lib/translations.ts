@@ -13,9 +13,10 @@ export const translations = {
       profile: "Profil",
       logout: "Logg ut",
       login: "Logg inn",
+      logoutSuccessTitle: "Suksess!",
+      logoutSuccessText: "Du er nå logget ut.",
     },
     home: {
-      badge: "Scale Up Digital Portefølje",
       title1: "Digital ",
       title2: "Portefølje",
       subtitle: "Her finner du digitale porteføljer fra deltakere i Scale Up-kurset. Utforsk kandidater, les mer om Nettverkshuset og ta kontakt dersom du vil samarbeide.",
@@ -39,6 +40,14 @@ export const translations = {
       subscribeSubtitle: "Hold deg oppdatert på prosjektet, kandidater og nye muligheter for samarbeid.",
       emailPlaceholder: "Skriv inn e-postadressen din",
       subscribeBtn: "Abonner",
+      deleteConfirmTitle: "Slett profil?",
+      deleteConfirmText: "Er du sikker på at du vil slette denne profilen?",
+      deleteConfirmBtn: "Ja, slett den!",
+      deleteCancelBtn: "Avbryt",
+      deleteSuccessTitle: "Slettet!",
+      deleteSuccessText: "Porteføljen har blitt slettet.",
+      subscribeSuccessTitle: "Suksess!",
+      subscribeSuccessText: "Takk for din interesse. Vi tar kontakt snart!",
     },
     about: {
       badge: "Om Oss",
@@ -48,6 +57,8 @@ export const translations = {
       teamSubtitle: "Mennesker som bygger aktivitet, samarbeid og synlighet rundt deltakerne.",
       meet: "Møt ",
       partners: "Samarbeidspartnere",
+      activityAlt: "Nettverkshuset aktivitet",
+      communityAlt: "Nettverkshuset fellesskap",
     },
     portfolio: {
       hello: "Hei, jeg er",
@@ -90,6 +101,14 @@ export const translations = {
       email: "E-post",
       password: "Passord",
       loginAs: "Logg inn som",
+      emailPlaceholder: "deg@eksempel.no",
+      loggingIn: "Logger inn…",
+      successTitle: "Suksess!",
+      successText: "Du er nå logget inn.",
+      errorTitle: "Feil",
+      errorInvalidCredentials: "Feil e-post eller passord.",
+      errorTooManyRequests: "For mange forsøk. Prøv igjen senere.",
+      errorGeneric: "Innlogging mislyktes. Sjekk e-post og passord.",
     },
     register: {
       titleCreate: "Opprett din digitale portefølje",
@@ -162,9 +181,19 @@ export const translations = {
       errorAbout: "Om meg er påkrevd.",
       errorSkills: "Legg til minst én ferdighet.",
       errorExp: "Legg til minst én arbeidserfaring.",
-      errorEdu: "Legg til minst én utdanning."
-    }
-  },
+      errorEdu: "Legg til minst én utdanning.",
+      errorDialogTitle: "Feil",
+      imageTooLarge: "Bildet er for stort. Maks 2 MB.",
+      saveErrorGeneric: "Noe gikk galt. Prøv igjen.",
+      saveSuccessTitle: "Suksess!",
+      updatedText: "Profilen ble oppdatert.",
+      createdText: "Profilen ble opprettet."
+    },
+    notFound: {
+      title: "Siden ble ikke funnet",
+      subtitle: "Lenken finnes ikke i den nye React-applikasjonen ennå.",
+      backHome: "Til forsiden",
+    },
   en: {
     nav: {
       home: "Home",
@@ -177,9 +206,10 @@ export const translations = {
       profile: "Profile",
       logout: "Log out",
       login: "Log in",
+      logoutSuccessTitle: "Success!",
+      logoutSuccessText: "You are now logged out.",
     },
     home: {
-      badge: "Scale Up Digital Portfolio",
       title1: "Digital ",
       title2: "Portfolio",
       subtitle: "Here you will find digital portfolios from participants in the Scale Up course. Explore candidates, read more about Nettverkshuset and get in touch if you want to collaborate.",
@@ -203,6 +233,14 @@ export const translations = {
       subscribeSubtitle: "Stay updated on the project, candidates and new opportunities for collaboration.",
       emailPlaceholder: "Write your email address",
       subscribeBtn: "Subscribe",
+      deleteConfirmTitle: "Delete profile?",
+      deleteConfirmText: "Are you sure you want to delete this profile?",
+      deleteConfirmBtn: "Yes, delete it!",
+      deleteCancelBtn: "Cancel",
+      deleteSuccessTitle: "Deleted!",
+      deleteSuccessText: "The portfolio has been deleted.",
+      subscribeSuccessTitle: "Success!",
+      subscribeSuccessText: "Thanks for your interest. We'll be in touch soon!",
     },
     about: {
       badge: "About Us",
@@ -212,6 +250,8 @@ export const translations = {
       teamSubtitle: "People who build activity, collaboration and visibility around the participants.",
       meet: "Meet ",
       partners: "Partners",
+      activityAlt: "Nettverkshuset activity",
+      communityAlt: "Nettverkshuset community",
     },
     portfolio: {
       hello: "Hi, I am",
@@ -254,6 +294,14 @@ export const translations = {
       email: "Email",
       password: "Password",
       loginAs: "Log in as",
+      emailPlaceholder: "you@example.com",
+      loggingIn: "Logging in…",
+      successTitle: "Success!",
+      successText: "You are now logged in.",
+      errorTitle: "Error",
+      errorInvalidCredentials: "Incorrect email or password.",
+      errorTooManyRequests: "Too many attempts. Try again later.",
+      errorGeneric: "Login failed. Check your email and password.",
     },
     register: {
       titleCreate: "Create your digital portfolio",
@@ -326,7 +374,18 @@ export const translations = {
       errorAbout: "About me is required.",
       errorSkills: "Add at least one skill.",
       errorExp: "Add at least one experience.",
-      errorEdu: "Add at least one education."
-    }
+      errorEdu: "Add at least one education.",
+      errorDialogTitle: "Error",
+      imageTooLarge: "The image is too large. Max 2 MB.",
+      saveErrorGeneric: "Something went wrong. Please try again.",
+      saveSuccessTitle: "Success!",
+      updatedText: "The profile was updated.",
+      createdText: "The profile was created."
+    },
+    notFound: {
+      title: "Page not found",
+      subtitle: "This link doesn't exist in the new React application yet.",
+      backHome: "Back to home",
+    },
   },
 };
