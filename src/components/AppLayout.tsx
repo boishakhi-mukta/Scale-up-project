@@ -1,23 +1,23 @@
 import { useState } from "react";
-import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { navLinks } from "../data/site";
 import { useLanguage } from "../lib/LanguageContext";
 import { useAuth } from "../lib/AuthContext";
 import { getAllPortfolios } from "../lib/portfolioStore";
 import Swal from "sweetalert2";
 
-const navClassName = ({ isActive }: { isActive: boolean }) =>
+const navClassName = (active: boolean) =>
   [
     "rounded-full px-4 py-2 text-sm font-semibold transition duration-300",
-    isActive
+    active
       ? "bg-white text-brand-700 shadow-sm ring-1 ring-brand-100"
       : "text-slate-600 hover:bg-white/80 hover:text-slate-950",
   ].join(" ");
 
-const mobileNavClassName = ({ isActive }: { isActive: boolean }) =>
+const mobileNavClassName = (active: boolean) =>
   [
     "block rounded-xl px-4 py-3 text-base font-semibold transition",
-    isActive
+    active
       ? "bg-brand-50 text-brand-700"
       : "text-slate-700 hover:bg-slate-50",
   ].join(" ");
@@ -26,10 +26,23 @@ export function AppLayout() {
   const { t, language, setLanguage } = useLanguage();
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [showMenu, setShowMenu] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const userPortfolio = user ? getAllPortfolios().find(p => p.email === user.email) : undefined;
+
+  const isLinkActive = (targetPath: string) => {
+    const [path, hash] = targetPath.split("#");
+    const normalizedPath = path || "/";
+    if (hash) {
+      return location.pathname === normalizedPath && location.hash === `#${hash}`;
+    }
+    if (normalizedPath === "/") {
+      return location.pathname === "/" && location.hash === "";
+    }
+    return location.pathname.startsWith(normalizedPath);
+  };
 
   const handleLogout = () => {
     setShowMenu(false);
@@ -75,7 +88,7 @@ export function AppLayout() {
               {navLinks.map((link) => {
                 const targetPath = (!user && link.to === "/register") ? "/login" : link.to;
                 return (
-                  <NavLink key={link.to} to={targetPath} className={navClassName} end={link.to === "/"}>
+                  <NavLink key={link.to} to={targetPath} className={navClassName(isLinkActive(targetPath))} end={link.to === "/"}>
                     {link.labelKey ? t(`nav.${link.labelKey}` as any) : link.label}
                   </NavLink>
                 );
@@ -173,7 +186,7 @@ export function AppLayout() {
                   <NavLink
                     key={link.to}
                     to={targetPath}
-                    className={mobileNavClassName}
+                    className={mobileNavClassName(isLinkActive(targetPath))}
                     end={link.to === "/"}
                     onClick={() => setMobileMenuOpen(false)}
                   >

@@ -1,11 +1,12 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { usePortfolioCards } from "../hooks/usePortfolioCards";
 import { useCountUp } from "../hooks/useCountUp";
 import { useLanguage } from "../lib/LanguageContext";
 import { useAuth } from "../lib/AuthContext";
 import { deletePortfolio } from "../lib/portfolioStore";
+import { teamMembers } from "../data/site";
 import Swal from "sweetalert2";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export function HomePage() {
   const candidates = usePortfolioCards();
@@ -13,8 +14,18 @@ export function HomePage() {
   const { t } = useLanguage();
   const { user } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [subscribeEmail, setSubscribeEmail] = useState("");
+
+  useEffect(() => {
+    if (location.hash === "#about") {
+      const el = document.getElementById("about");
+      if (el) {
+        requestAnimationFrame(() => el.scrollIntoView({ behavior: "smooth", block: "start" }));
+      }
+    }
+  }, [location.hash]);
 
   const handleDelete = (slug: string) => {
     Swal.fire({
@@ -59,7 +70,7 @@ export function HomePage() {
 
   return (
     <>
-      <section className="mx-auto grid max-w-[1140px] gap-14 px-6 py-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:py-24">
+      <section className="mx-auto grid min-h-[70vh] max-w-[1140px] items-start gap-14 px-6 pt-6 pb-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <div className="animate-fade-up">
           <h1 className="font-serif text-5xl font-extrabold leading-tight text-slate-900 sm:text-6xl lg:text-[4rem]">
             {t("home.title1")} <span className="text-brand-600">{t("home.title2")}</span>
@@ -74,12 +85,12 @@ export function HomePage() {
             >
               {t("home.createPortfolio")}
             </Link>
-            <Link
-              to="/about"
+            <a
+              href="#about"
               className="rounded-full border border-slate-300 bg-white px-8 py-3.5 text-sm font-bold text-slate-700 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-slate-400 hover:bg-slate-50"
             >
               {t("home.aboutUs")}
-            </Link>
+            </a>
           </div>
           <div className="mt-12 grid max-w-xl gap-4 sm:grid-cols-3">
             <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
@@ -164,6 +175,69 @@ export function HomePage() {
               </article>
             );
           })}
+        </div>
+      </section>
+
+      <section id="about" className="mx-auto mt-32 max-w-[1140px] scroll-mt-24 px-6">
+        <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
+          <div className="animate-fade-up">
+            <span className="inline-flex rounded-full border border-brand-200 bg-brand-50 px-4 py-2 text-sm font-bold text-brand-700 shadow-sm">
+              {t("about.badge")}
+            </span>
+            <h2 className="mt-8 font-serif text-4xl font-extrabold text-slate-900 sm:text-5xl">{t("about.title")}</h2>
+            <p className="mt-6 text-lg leading-relaxed text-slate-600 sm:text-xl">
+              {t("about.subtitle")}
+            </p>
+          </div>
+          <div className="animate-float grid grid-cols-2 gap-4 sm:gap-6">
+            <img
+              src="/Images/image/group.jpeg"
+              alt={t("about.activityAlt")}
+              className="card-lift h-64 w-full rounded-3xl object-cover shadow-sm"
+            />
+            <img
+              src="/Images/image/header_bg.png"
+              alt={t("about.communityAlt")}
+              className="card-lift h-64 w-full rounded-3xl object-cover shadow-sm sm:translate-y-8"
+            />
+          </div>
+        </div>
+
+        <div className="mt-32">
+          <div className="mb-12 text-center">
+            <h2 className="font-serif text-4xl font-extrabold text-slate-900">{t("about.teamTitle")}</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">{t("about.teamSubtitle")}</p>
+          </div>
+          <div className="grid gap-8 lg:grid-cols-2">
+            {teamMembers.map((member) => (
+              <article key={member.name} className="card-lift animate-fade-up grid gap-6 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:grid-cols-[220px_1fr]">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="h-[220px] w-full rounded-2xl object-cover shadow-sm"
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = "/Images/image/woman.png";
+                  }}
+                />
+                <div className="flex flex-col justify-center">
+                  <h3 className="text-2xl font-bold text-slate-900">{t("about.meet")}{member.name}</h3>
+                  <p className="mt-2 text-sm font-bold uppercase tracking-widest text-brand-600">{member.title}</p>
+                  <p className="mt-4 leading-relaxed text-slate-600">{member.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-32">
+          <h2 className="text-center font-serif text-4xl font-extrabold text-slate-900">{t("about.partners")}</h2>
+          <div className="marquee mt-10 rounded-3xl border border-slate-200 bg-white py-8 shadow-sm">
+            <div className="marquee-track opacity-80 grayscale transition-all hover:opacity-100 hover:grayscale-0">
+              <img src="/Images/image/partners.png" alt={t("about.partners")} className="marquee-image" />
+              <img src="/Images/image/partners.png" alt="" aria-hidden="true" className="marquee-image" />
+            </div>
+          </div>
         </div>
       </section>
 

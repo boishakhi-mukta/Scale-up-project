@@ -41,7 +41,7 @@ export type PortfolioRecord = {
 
 export const navLinks = [
   { label: "Hjem", to: "/", labelKey: "home" },
-  { label: "Om Oss", to: "/about", labelKey: "about" },
+  { label: "Om Oss", to: "/#about", labelKey: "about" },
   { label: "Registrer", to: "/register", labelKey: "register" },
 ];
 
