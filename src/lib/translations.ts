@@ -15,6 +15,8 @@ export const translations = {
       login: "Logg inn",
       logoutSuccessTitle: "Suksess!",
       logoutSuccessText: "Du er nå logget ut.",
+      darkMode: "Bytt til mørk modus",
+      lightMode: "Bytt til lyst modus",
     },
     home: {
       heroBadge: "Scale Up-programmet",
@@ -212,6 +214,8 @@ export const translations = {
       login: "Log in",
       logoutSuccessTitle: "Success!",
       logoutSuccessText: "You are now logged out.",
+      darkMode: "Switch to dark mode",
+      lightMode: "Switch to light mode",
     },
     home: {
       heroBadge: "The Scale Up Program",

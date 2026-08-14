@@ -5,6 +5,7 @@ import { useLanguage } from "../lib/LanguageContext";
 import { useAuth } from "../lib/AuthContext";
 import { deletePortfolio } from "../lib/portfolioStore";
 import { teamMembers } from "../data/site";
+import { Badge, Button, buttonVariants, Card } from "../components/ui";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
 import {
@@ -25,24 +26,15 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-function SectionBadge({ icon: Icon, children }: { icon: LucideIcon; children: React.ReactNode }) {
-  return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-4 py-2 text-sm font-bold text-brand-700 shadow-sm">
-      <Icon className="h-4 w-4" />
-      {children}
-    </span>
-  );
-}
-
 function StatCard({ icon: Icon, value, label }: { icon: LucideIcon; value: string; label: string }) {
   return (
-    <div className="card-lift rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-      <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
+    <Card hover padding="sm">
+      <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-brand-50 text-brand-600 dark:bg-brand-900/20 dark:text-brand-400">
         <Icon className="h-5 w-5" />
       </span>
-      <p className="mt-3 text-2xl font-extrabold text-slate-900">{value}</p>
-      <p className="mt-1 text-sm font-medium text-slate-500">{label}</p>
-    </div>
+      <p className="mt-3 text-2xl font-extrabold text-slate-900 dark:text-slate-100">{value}</p>
+      <p className="mt-1 text-sm font-medium text-slate-500 dark:text-slate-400">{label}</p>
+    </Card>
   );
 }
 
@@ -109,30 +101,27 @@ export function HomePage() {
   return (
     <>
       <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute -top-24 -right-32 -z-10 h-104 w-104 rounded-full bg-brand-100/60 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-24 -left-24 -z-10 h-80 w-80 rounded-full bg-slate-100 blur-3xl" />
+        <div className="pointer-events-none absolute -top-24 -right-32 -z-10 h-104 w-104 rounded-full bg-brand-100/60 blur-3xl dark:bg-brand-900/15" />
+        <div className="pointer-events-none absolute -bottom-24 -left-24 -z-10 h-80 w-80 rounded-full bg-slate-100 blur-3xl dark:bg-slate-800/40" />
 
         <div className="mx-auto grid min-h-[70vh] max-w-[1140px] items-start gap-14 px-6 pt-6 pb-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div className="animate-fade-up">
-            <SectionBadge icon={Sparkles}>{t("home.heroBadge")}</SectionBadge>
-            <h1 className="mt-6 font-serif text-5xl font-extrabold leading-tight text-slate-900 sm:text-6xl lg:text-[4rem]">
-              {t("home.title1")} <span className="text-brand-600">{t("home.title2")}</span>
+            <Badge variant="brand" icon={Sparkles}>{t("home.heroBadge")}</Badge>
+            <h1 className="mt-6 font-serif text-5xl font-extrabold leading-tight text-slate-900 sm:text-6xl lg:text-[4rem] dark:text-slate-50">
+              {t("home.title1")} <span className="text-brand-600 dark:text-brand-400">{t("home.title2")}</span>
             </h1>
-            <p className="mt-6 max-w-[570px] text-lg leading-relaxed text-slate-600 sm:text-xl">
+            <p className="mt-6 max-w-[570px] text-lg leading-relaxed text-slate-600 sm:text-xl dark:text-slate-400">
               {t("home.subtitle")}
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
                 to={user ? "/register" : "/login"}
-                className="group inline-flex items-center gap-2 rounded-full bg-brand-600 px-8 py-3.5 text-sm font-bold text-white shadow-lg shadow-brand-200 transition duration-300 hover:-translate-y-0.5 hover:bg-brand-700"
+                className={buttonVariants({ variant: "primary", size: "lg", className: "group" })}
               >
                 {t("home.createPortfolio")}
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
-              <a
-                href="#about"
-                className="rounded-full border border-slate-300 bg-white px-8 py-3.5 text-sm font-bold text-slate-700 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-slate-400 hover:bg-slate-50"
-              >
+              <a href="#about" className={buttonVariants({ variant: "secondary", size: "lg" })}>
                 {t("home.aboutUs")}
               </a>
             </div>
@@ -143,19 +132,19 @@ export function HomePage() {
             </div>
           </div>
           <div className="animate-float relative flex justify-center lg:justify-end">
-            <div className="pointer-events-none absolute inset-6 -z-10 rounded-[2.5rem] bg-gradient-to-br from-brand-200/50 to-transparent blur-2xl" />
+            <div className="pointer-events-none absolute inset-6 -z-10 rounded-[2.5rem] bg-gradient-to-br from-brand-200/50 to-transparent blur-2xl dark:from-brand-900/20" />
             <img
               src="/Images/image/cover.png"
               alt="Illustrasjon for Scale Up"
               className="max-h-[460px] w-full max-w-[570px] rounded-3xl object-cover shadow-[0_20px_50px_rgba(15,23,42,0.1)]"
             />
-            <div className="absolute -bottom-6 left-6 flex items-center gap-3 rounded-2xl border border-slate-200 bg-white/95 px-5 py-4 shadow-xl backdrop-blur">
+            <div className="absolute -bottom-6 left-6 flex items-center gap-3 rounded-2xl border border-slate-200 bg-white/95 px-5 py-4 shadow-xl backdrop-blur dark:border-slate-800 dark:bg-slate-900/95">
               <span className="relative flex h-3 w-3 shrink-0">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-500" />
               </span>
-              <p className="text-sm font-bold text-slate-900">
-                {candidateCount}+ <span className="font-medium text-slate-500">{t("home.liveBadge")}</span>
+              <p className="text-sm font-bold text-slate-900 dark:text-slate-100">
+                {candidateCount}+ <span className="font-medium text-slate-500 dark:text-slate-400">{t("home.liveBadge")}</span>
               </p>
             </div>
           </div>
@@ -164,13 +153,13 @@ export function HomePage() {
 
       <section className="mx-auto mt-24 max-w-[1140px] px-6">
         <div className="animate-fade-up text-center">
-          <SectionBadge icon={Star}>
+          <Badge variant="brand" icon={Star}>
             {t("home.featured")} {t("home.candidateStories")}
-          </SectionBadge>
-          <h2 className="mt-6 font-serif text-4xl font-extrabold text-slate-900 sm:text-5xl">
-            {t("home.ourCandidates1")} <span className="text-brand-600">{t("home.ourCandidates2")}</span>
+          </Badge>
+          <h2 className="mt-6 font-serif text-4xl font-extrabold text-slate-900 sm:text-5xl dark:text-slate-50">
+            {t("home.ourCandidates1")} <span className="text-brand-600 dark:text-brand-400">{t("home.ourCandidates2")}</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600 sm:text-xl">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600 sm:text-xl dark:text-slate-400">
             {t("home.ourCandidatesSubtitle")}
           </p>
         </div>
@@ -182,36 +171,36 @@ export function HomePage() {
             return (
               <article
                 key={candidate.slug ?? candidate.name}
-                className="card-lift animate-fade-up flex flex-col rounded-3xl border-2 border-b-8 border-r-8 border-slate-200 bg-white px-6 py-8 text-center shadow-md transition-all hover:shadow-xl hover:-translate-y-1"
+                className="card-lift animate-fade-up flex flex-col rounded-3xl border-2 border-b-8 border-r-8 border-slate-200 bg-white px-6 py-8 text-center shadow-md transition-all hover:shadow-xl hover:-translate-y-1 dark:border-slate-800 dark:bg-slate-900"
               >
                 <div className="relative mx-auto h-28 w-28">
                   <img
                     src={candidate.image}
                     alt={candidate.name}
-                    className="h-28 w-28 rounded-full border-4 border-brand-50 object-cover shadow-sm"
+                    className="h-28 w-28 rounded-full border-4 border-brand-50 object-cover shadow-sm dark:border-brand-900/30"
                   />
                   {hasProfile && (
-                    <span className="absolute bottom-0 right-0 flex h-7 w-7 items-center justify-center rounded-full border-4 border-white bg-brand-500 text-white">
+                    <span className="absolute bottom-0 right-0 flex h-7 w-7 items-center justify-center rounded-full border-4 border-white bg-brand-500 text-white dark:border-slate-900">
                       <Check className="h-3.5 w-3.5" />
                     </span>
                   )}
                 </div>
-                <h3 className="mt-5 text-xl font-bold text-slate-900">{candidate.name}</h3>
-                <p className="mt-2 flex min-h-12 items-center justify-center gap-1.5 text-sm font-medium text-slate-500">
-                  <Briefcase className="h-3.5 w-3.5 shrink-0 text-slate-400" />
+                <h3 className="mt-5 text-xl font-bold text-slate-900 dark:text-slate-100">{candidate.name}</h3>
+                <p className="mt-2 flex min-h-12 items-center justify-center gap-1.5 text-sm font-medium text-slate-500 dark:text-slate-400">
+                  <Briefcase className="h-3.5 w-3.5 shrink-0 text-slate-400 dark:text-slate-500" />
                   {candidate.title}
                 </p>
                 <div className="mt-auto space-y-2 pt-6">
                   {hasProfile ? (
                     <Link
                       to={`/portfolio/${candidate.slug}`}
-                      className="group/btn inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-brand-500 to-brand-600 px-5 py-3 text-sm font-bold text-white shadow-md transition duration-300 hover:from-brand-600 hover:to-brand-700 hover:shadow-lg hover:-translate-y-0.5"
+                      className={buttonVariants({ variant: "primary", size: "md", className: "group/btn w-full" })}
                     >
                       {t("home.portfolioBtn")}
                       <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
                     </Link>
                   ) : (
-                    <span className="inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-dashed border-slate-300 bg-slate-50 px-5 py-3 text-sm font-bold text-slate-400">
+                    <span className="inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-dashed border-slate-300 bg-slate-50 px-5 py-3 text-sm font-bold text-slate-400 dark:border-slate-700 dark:bg-slate-800/40 dark:text-slate-500">
                       <Clock className="h-4 w-4" />
                       {t("home.comingSoon")}
                     </span>
@@ -220,14 +209,14 @@ export function HomePage() {
                     <div className="mt-2 grid grid-cols-2 gap-2">
                       <button
                         onClick={() => navigate(`/register?edit=${candidate.slug}`)}
-                        className="inline-flex items-center justify-center gap-1.5 rounded-full bg-amber-50 px-3 py-2 text-xs font-bold text-amber-700 transition hover:bg-amber-100"
+                        className="inline-flex items-center justify-center gap-1.5 rounded-full bg-amber-50 px-3 py-2 text-xs font-bold text-amber-700 transition hover:bg-amber-100 dark:bg-amber-900/20 dark:text-amber-300 dark:hover:bg-amber-900/30"
                       >
                         <Pencil className="h-3.5 w-3.5" />
                         {t("home.editBtn")}
                       </button>
                       <button
                         onClick={() => handleDelete(candidate.slug!)}
-                        className="inline-flex items-center justify-center gap-1.5 rounded-full bg-red-50 px-3 py-2 text-xs font-bold text-red-700 transition hover:bg-red-100"
+                        className="inline-flex items-center justify-center gap-1.5 rounded-full bg-red-50 px-3 py-2 text-xs font-bold text-red-700 transition hover:bg-red-100 dark:bg-red-900/20 dark:text-red-300 dark:hover:bg-red-900/30"
                       >
                         <Trash2 className="h-3.5 w-3.5" />
                         {t("home.deleteBtn")}
@@ -244,9 +233,9 @@ export function HomePage() {
       <section id="about" className="mx-auto mt-32 max-w-[1140px] scroll-mt-24 px-6">
         <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
           <div className="animate-fade-up">
-            <SectionBadge icon={Sparkles}>{t("about.badge")}</SectionBadge>
-            <h2 className="mt-8 font-serif text-4xl font-extrabold text-slate-900 sm:text-5xl">{t("about.title")}</h2>
-            <p className="mt-6 text-lg leading-relaxed text-slate-600 sm:text-xl">
+            <Badge variant="brand" icon={Sparkles}>{t("about.badge")}</Badge>
+            <h2 className="mt-8 font-serif text-4xl font-extrabold text-slate-900 sm:text-5xl dark:text-slate-50">{t("about.title")}</h2>
+            <p className="mt-6 text-lg leading-relaxed text-slate-600 sm:text-xl dark:text-slate-400">
               {t("about.subtitle")}
             </p>
           </div>
@@ -266,12 +255,12 @@ export function HomePage() {
 
         <div className="mt-32">
           <div className="mb-12 text-center">
-            <h2 className="font-serif text-4xl font-extrabold text-slate-900">{t("about.teamTitle")}</h2>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">{t("about.teamSubtitle")}</p>
+            <h2 className="font-serif text-4xl font-extrabold text-slate-900 dark:text-slate-50">{t("about.teamTitle")}</h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600 dark:text-slate-400">{t("about.teamSubtitle")}</p>
           </div>
           <div className="grid gap-8 lg:grid-cols-2">
             {teamMembers.map((member) => (
-              <article key={member.name} className="card-lift animate-fade-up grid gap-6 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:grid-cols-[220px_1fr]">
+              <article key={member.name} className="card-lift animate-fade-up grid gap-6 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:grid-cols-[220px_1fr] dark:border-slate-800 dark:bg-slate-900">
                 <img
                   src={member.image}
                   alt={member.name}
@@ -282,12 +271,12 @@ export function HomePage() {
                   }}
                 />
                 <div className="flex flex-col justify-center">
-                  <h3 className="text-2xl font-bold text-slate-900">{t("about.meet")}{member.name}</h3>
-                  <p className="mt-2 flex items-center gap-1.5 text-sm font-bold uppercase tracking-widest text-brand-600">
+                  <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100">{t("about.meet")}{member.name}</h3>
+                  <p className="mt-2 flex items-center gap-1.5 text-sm font-bold uppercase tracking-widest text-brand-600 dark:text-brand-400">
                     <Briefcase className="h-3.5 w-3.5" />
                     {member.title}
                   </p>
-                  <p className="mt-4 leading-relaxed text-slate-600">{member.description}</p>
+                  <p className="mt-4 leading-relaxed text-slate-600 dark:text-slate-400">{member.description}</p>
                 </div>
               </article>
             ))}
@@ -295,8 +284,8 @@ export function HomePage() {
         </div>
 
         <div className="mt-32">
-          <h2 className="text-center font-serif text-4xl font-extrabold text-slate-900">{t("about.partners")}</h2>
-          <div className="marquee mt-10 rounded-3xl border border-slate-200 bg-white py-8 shadow-sm">
+          <h2 className="text-center font-serif text-4xl font-extrabold text-slate-900 dark:text-slate-50">{t("about.partners")}</h2>
+          <div className="marquee mt-10 rounded-3xl border border-slate-200 bg-white py-8 shadow-sm dark:border-slate-800 dark:bg-slate-900">
             <div className="marquee-track opacity-80 grayscale transition-all hover:opacity-100 hover:grayscale-0">
               <img src="/Images/image/partners.png" alt={t("about.partners")} className="marquee-image" />
               <img src="/Images/image/partners.png" alt="" aria-hidden="true" className="marquee-image" />
@@ -306,32 +295,31 @@ export function HomePage() {
       </section>
 
       <section className="mx-auto mt-32 max-w-[1140px] px-6">
-        <div className="flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl md:flex-row">
+        <div className="flex flex-col overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl md:flex-row dark:border-slate-800 dark:bg-slate-900">
           <div className="md:w-1/2">
             <img src="/Images/image/subscirbe.png" alt="Scale Up group" className="h-full min-h-[300px] w-full object-cover" />
           </div>
           <div className="flex flex-col justify-center px-8 py-12 md:w-1/2">
-            <SectionBadge icon={Mail}>{t("home.subscribeBadge")}</SectionBadge>
-            <h2 className="mt-6 font-serif text-3xl font-extrabold text-slate-900 sm:text-4xl">{t("home.subscribeTitle")}</h2>
-            <p className="mt-4 text-base leading-relaxed text-slate-600">
+            <Badge variant="brand" icon={Mail}>{t("home.subscribeBadge")}</Badge>
+            <h2 className="mt-6 font-serif text-3xl font-extrabold text-slate-900 sm:text-4xl dark:text-slate-50">{t("home.subscribeTitle")}</h2>
+            <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-400">
               {t("home.subscribeSubtitle")}
             </p>
             <form className="mt-8 flex flex-col gap-3 sm:flex-row" onSubmit={handleSubscribe}>
               <div className="relative flex-1">
-                <Mail className="pointer-events-none absolute left-5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                <Mail className="pointer-events-none absolute left-5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400 dark:text-slate-500" />
                 <input
                   type="email"
                   value={subscribeEmail}
                   onChange={(e) => setSubscribeEmail(e.target.value)}
                   placeholder={t("home.emailPlaceholder")}
-                  className="w-full rounded-full border border-slate-300 bg-slate-50 py-3.5 pl-11 pr-5 text-slate-900 placeholder-slate-400 outline-none transition focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-100"
+                  className="w-full rounded-full border border-slate-300 bg-slate-50 py-3.5 pl-11 pr-5 text-slate-900 placeholder-slate-400 outline-none transition focus:border-brand-500 focus:bg-white focus:ring-4 focus:ring-brand-100 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder-slate-500 dark:focus:bg-slate-900 dark:focus:ring-brand-900/30"
                   required
                 />
               </div>
-              <button type="submit" className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-600 px-8 py-3.5 text-sm font-bold text-white shadow-md shadow-brand-200 transition duration-300 hover:bg-brand-700">
+              <Button type="submit" icon={Send}>
                 {t("home.subscribeBtn")}
-                <Send className="h-4 w-4" />
-              </button>
+              </Button>
             </form>
           </div>
         </div>
