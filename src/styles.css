@@ -7,16 +7,27 @@
   --font-sans: "Roboto", sans-serif;
   --font-serif: "Roboto Slab", serif;
 
-  --color-brand-50: #f3fbf0;
-  --color-brand-100: #d5ead8;
-  --color-brand-200: #b9dfbc;
-  --color-brand-300: #96ce9c;
-  --color-brand-400: #74be79;
-  --color-brand-500: #5fb84c;
-  --color-brand-600: #54b435;
-  --color-brand-700: #379237;
-  --color-brand-800: #2b7530;
-  --color-brand-900: #1f5322;
+  --color-brand-50: #f2f4fd;
+  --color-brand-100: #e0e6fa;
+  --color-brand-200: #bdcaf5;
+  --color-brand-300: #8ca4ee;
+  --color-brand-400: #4e73e4;
+  --color-brand-500: #2250dd;
+  --color-brand-600: #1c43ba;
+  --color-brand-700: #173697;
+  --color-brand-800: #122b78;
+  --color-brand-900: #0d2059;
+
+  --color-accent-50: #f7f4fb;
+  --color-accent-100: #ece5f5;
+  --color-accent-200: #d6c8ea;
+  --color-accent-300: #b79fda;
+  --color-accent-400: #906bc7;
+  --color-accent-500: #7043b1;
+  --color-accent-600: #5d3894;
+  --color-accent-700: #4b2d76;
+  --color-accent-800: #3a235c;
+  --color-accent-900: #2a1942;
 }
 
 html {

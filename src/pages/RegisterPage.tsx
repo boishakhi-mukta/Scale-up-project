@@ -290,7 +290,7 @@ export function RegisterPage() {
             ))}
           </div>
           <div className="h-1.5 w-full rounded-full bg-slate-100">
-            <div className="h-1.5 rounded-full bg-gradient-to-r from-brand-500 to-brand-700 transition-all duration-500"
+            <div className="h-1.5 rounded-full bg-gradient-to-r from-brand-500 to-accent-600 transition-all duration-500"
               style={{ width: `${progress}%` }} />
           </div>
         </div>
@@ -559,12 +559,12 @@ export function RegisterPage() {
 
               {step < STEPS.length ? (
                 <button type="button" onClick={goNext}
-                  className="rounded-full bg-brand-600 px-8 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-200 transition hover:-translate-y-0.5 hover:bg-brand-700">
+                  className="rounded-full bg-gradient-to-r from-brand-500 to-accent-600 px-8 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-200 transition hover:-translate-y-0.5 hover:from-brand-600 hover:to-accent-700">
                   {t("register.nextBtn")}
                 </button>
               ) : (
                 <button type="submit"
-                  className="rounded-full bg-gradient-to-r from-brand-600 to-brand-800 px-8 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-300 transition hover:-translate-y-0.5">
+                  className="rounded-full bg-gradient-to-r from-brand-500 to-accent-600 px-8 py-2.5 text-sm font-semibold text-white shadow-lg shadow-brand-300 transition hover:-translate-y-0.5 hover:from-brand-600 hover:to-accent-700">
                   {editSlug ? t("register.saveChanges") : t("register.createBtn")}
                 </button>
               )}

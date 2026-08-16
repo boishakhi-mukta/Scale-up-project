@@ -144,7 +144,7 @@ export function LoginPage() {
             <button
               type="submit"
               disabled={isSubmitting || isAuthenticating}
-              className="mt-6 w-full rounded-xl bg-linear-to-r from-brand-500 to-brand-600 px-4 py-3.5 text-sm font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:from-brand-600 hover:to-brand-700 hover:shadow-lg disabled:opacity-50"
+              className="mt-6 w-full rounded-xl bg-linear-to-r from-brand-500 to-accent-600 px-4 py-3.5 text-sm font-bold text-white shadow-md transition hover:-translate-y-0.5 hover:from-brand-600 hover:to-accent-700 hover:shadow-lg disabled:opacity-50"
             >
               {isSubmitting ? t("login.loggingIn") : t("login.loginAs")}
             </button>

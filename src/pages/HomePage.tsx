@@ -63,7 +63,7 @@ export function HomePage() {
       text: t("home.deleteConfirmText"),
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#54b435",
+      confirmButtonColor: "#1c43ba",
       cancelButtonColor: "#ef4444",
       confirmButtonText: t("home.deleteConfirmBtn"),
       cancelButtonText: t("home.deleteCancelBtn")

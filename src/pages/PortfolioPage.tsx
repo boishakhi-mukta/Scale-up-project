@@ -50,7 +50,7 @@ export function PortfolioPage() {
           {user?.email === portfolio.email && (
             <Link
               to={`/register?edit=${portfolio.slug}`}
-              className="px-5 py-2 rounded-full bg-linear-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-white transition font-bold shadow-md hover:-translate-y-0.5 hover:shadow-lg"
+              className="px-5 py-2 rounded-full bg-linear-to-r from-brand-500 to-accent-600 hover:from-brand-600 hover:to-accent-700 text-white transition font-bold shadow-md hover:-translate-y-0.5 hover:shadow-lg"
             >
               {t("register.titleEdit")}
             </Link>
@@ -86,7 +86,7 @@ export function PortfolioPage() {
           <div className="mt-10 flex flex-wrap gap-4">
             <a
               href={`mailto:${portfolio.email}`}
-              className="px-8 py-3.5 rounded-full bg-linear-to-r from-brand-500 to-brand-600 text-white font-bold hover:from-brand-600 hover:to-brand-700 transition shadow-md hover:-translate-y-0.5 hover:shadow-lg"
+              className="px-8 py-3.5 rounded-full bg-linear-to-r from-brand-500 to-accent-600 text-white font-bold hover:from-brand-600 hover:to-accent-700 transition shadow-md hover:-translate-y-0.5 hover:shadow-lg"
             >
               {t("portfolio.getInTouch")}
             </a>
@@ -221,7 +221,7 @@ export function PortfolioPage() {
         <h2 className="text-3xl font-extrabold text-slate-900 mb-8">{t("portfolio.readyToBuild")}</h2>
         <a
           href={`mailto:${portfolio.email}`}
-          className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-linear-to-r from-brand-500 to-brand-600 text-white font-bold hover:from-brand-600 hover:to-brand-700 transition shadow-md hover:-translate-y-0.5 hover:shadow-lg"
+          className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-linear-to-r from-brand-500 to-accent-600 text-white font-bold hover:from-brand-600 hover:to-accent-700 transition shadow-md hover:-translate-y-0.5 hover:shadow-lg"
         >
           {t("portfolio.letsTalk")}
         </a>

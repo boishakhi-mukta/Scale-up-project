@@ -77,7 +77,7 @@ export function AppLayout() {
   return (
     <div className="min-h-screen font-sans bg-[#f8fafc] text-slate-900 selection:bg-brand-500/30 selection:text-brand-900 flex flex-col dark:bg-slate-950 dark:text-slate-100">
       {/* Soft Background */}
-      <div className="pointer-events-none fixed inset-x-0 top-0 -z-10 h-[28rem] bg-[radial-gradient(circle_at_top,#d5ead8_0%,rgba(255,255,255,0)_70%)] dark:bg-[radial-gradient(circle_at_top,rgba(84,180,53,0.12)_0%,rgba(2,6,23,0)_70%)]" />
+      <div className="pointer-events-none fixed inset-x-0 top-0 -z-10 h-[28rem] bg-[radial-gradient(circle_at_top,#e0e6fa_0%,rgba(255,255,255,0)_70%)] dark:bg-[radial-gradient(circle_at_top,rgba(28,67,186,0.14)_0%,rgba(2,6,23,0)_70%)]" />
 
       <header className="sticky top-0 z-30 border-b border-slate-200/60 bg-white/80 backdrop-blur-xl dark:border-slate-800/60 dark:bg-slate-900/80">
         <div className="mx-auto flex max-w-[1140px] items-center justify-between gap-4 px-6 py-4">
@@ -149,7 +149,7 @@ export function AppLayout() {
             ) : (
               <button
                 onClick={() => navigate("/login")}
-                className="rounded-full bg-gradient-to-r from-brand-500 to-brand-600 px-5 py-2 text-xs font-bold text-white shadow-md transition-all hover:from-brand-600 hover:to-brand-700 hover:shadow-lg hover:-translate-y-0.5"
+                className="rounded-full bg-gradient-to-r from-brand-500 to-accent-600 px-5 py-2 text-xs font-bold text-white shadow-md transition-all hover:from-brand-600 hover:to-accent-700 hover:shadow-lg hover:-translate-y-0.5"
               >
                 {t("layout.login")}
               </button>
@@ -256,7 +256,7 @@ export function AppLayout() {
               ) : (
                 <button
                   onClick={() => { setMobileMenuOpen(false); navigate("/login"); }}
-                  className="w-full rounded-full bg-gradient-to-r from-brand-500 to-brand-600 px-5 py-3 text-sm font-bold text-white shadow-md transition-all hover:from-brand-600 hover:to-brand-700 hover:shadow-lg"
+                  className="w-full rounded-full bg-gradient-to-r from-brand-500 to-accent-600 px-5 py-3 text-sm font-bold text-white shadow-md transition-all hover:from-brand-600 hover:to-accent-700 hover:shadow-lg"
                 >
                   {t("layout.login")}
                 </button>
